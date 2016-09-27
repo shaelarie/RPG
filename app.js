@@ -151,8 +151,8 @@
 
 			function secondaryAttack() {
 				if(player.secondaryAttackLeft > 0){
-					player.secondaryAttackLeft --;
 			    	if (isAlive(player) && isAlive(boss)) {
+			    		player.secondaryAttackLeft --;
 			        	player.health -= 1;
 			        	playerTurn(getRandomArbitrary(1, player.attack * 6), 0);
 			        	bossTurn(getRandomArbitrary(1, boss.attack), player.defense);
@@ -168,16 +168,14 @@
 			    	setOutput("You are out of secondary attacks!!")
 			    }
 			}
-
 			function getRandomArbitrary(min, max) {
 			    return Math.random() * (max - min) + min;
 			}
-
 			function defend() {
 			    if (isAlive(player) && isAlive(boss)) {
-			        player.health += getRandomArbitrary(0, 2);
+			        player.health += getRandomArbitrary(1, 6);
 			        playerTurn(getRandomArbitrary(0, 1), 0);
-			        bossTurn(getRandomArbitrary(0, boss.attack - player.defense), 0);
+			        bossTurn(getRandomArbitrary(0, 4), 0);
 			    } else if (isAlive(player) && !isAlive(boss)) {
 			        showStats();
 			        return;
@@ -187,7 +185,6 @@
 			    }
 			    setOutput("Player health: " + Math.round(player.health) + " - Boss " + boss.level + " health: " + Math.round(boss.health));
 			}
-
 			function isAlive(character) {
 
 			    if (character.health > 0) {
