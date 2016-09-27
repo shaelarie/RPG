@@ -1,6 +1,8 @@
-describe('delay', function() {
+describe('boss turn', function() {
+	beforeEach(function(){startGame()})
+
   it('test ms', function() {
-    expect(delay(2000)).toEqual(2000);
+    expect(playerTurn(1, 0)).toEqual(99);
   });
   
 });
