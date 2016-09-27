@@ -136,21 +136,17 @@
 			    player.health = 100;
 			    boss.attack += .05;
 			    boss.totalHealth = boss.health;
-			    boss.level++;
-
-			    setOutput("Start Level");
-			    document.getElementById('transition').style.display = 'none';
-			    setVisibility('none', 'none', '');
-			    if(boss.level == 28){
+			    if(boss.level == 27){
 			    	document.getElementById('princess').style.display = '';
 			    }
+			    boss.level++;
+			    setOutput("Start Level " + boss.level);
+			    document.getElementById('transition').style.display = 'none';
+			    setVisibility('none', 'none', '');
+			    
 			}
 			function printGold(goldTotal) {
 			    return (message[boss.level] + "\r\n" + " Your gold total is " + goldTotal);
-
-			    setOutput("Start fighting!");
-				document.getElementById('transition').style.display = 'none';
-				setVisibility('none', 'none', '');
 			}
 			function printGold(goldTotal) {
 				var winningLevel = 27;
