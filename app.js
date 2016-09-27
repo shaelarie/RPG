@@ -1,5 +1,9 @@
+			
+
+
 			var player = '';
 			var boss = '';
+			document.getElementById('exitButton').style.display = 'none';
 			document.getElementById('final').style.display = 'none';
 			document.getElementById('transition').style.display = 'none';
 			setVisibility('', 'none', 'none');
@@ -17,60 +21,59 @@
 			    document.getElementById('inGame').style.display = three;
 			}
 
-			function game() {
-
-			}
-
 			function Player(attack, defense) {
 			    this.attack = attack;
 			    this.defense = defense;
+			    this.secondaryAttackLeft = 2;
+			    this.secondaryAttackTotal = 2;
 			    this.health = 100;
 			    this.totalHealth = 100;
 			    this.score = 0;
 			    this.level = 1;
 			}
-			/*
-						function setAttackAndDefense(character, args){
-							character.attack = args[0];
-							character.defense = args[1];
-						}*/
 			Player.prototype.resetHealth = function() {
 			    this.health = this.totalHealth;
 			    this.health = this.health * 1.05;
 			}
 
 			function alien() {
+				document.getElementById('exitButton').style.display = '';
 			    setVisibility('none', 'none', '');
-			    player = new Player(6, 2);
+			    player = new Player(10, 6);
 			    player.health = 100;
 			}
 
 			function ninja() {
+				document.getElementById('exitButton').style.display = '';
 			    setVisibility('none', 'none', '');
-			    player = new Player(2, 6);
+			    player = new Player(6, 10);
 			    player.health = 100;
 			}
 
 			function cowboy() {
+				document.getElementById('exitButton').style.display = '';
 			    setVisibility('none', 'none', '');
-			    player = new Player(3, 3);
+			    player = new Player(8, 8);
 			    player.health = 100;
 			}
 
 			function displayInstructions() {
 			    setOutput("game description and rules", "headLiner");
 			}
-			/*function myFunction() {
-    		var x = document.getElementById("myText").value;
-    		document.getElementById("demo").innerHTML = x;
-			}
-*/
 			function getInput() {
 			    return document.getElementById("myText").value;
 			}
-
+			function alternateEnding(){
+				setVisibility('none', 'none', 'none');
+			    document.getElementById('transition').style.display = 'none';
+			    document.getElementById('exitButton').style.display = 'none';
+			    document.getElementById('final').style.display = '';
+			    setOutput("You are a quitter!! - Your final gold total was " + player.score);
+			}
 			function endGame() {
 			    setVisibility('none', 'none', 'none');
+			    document.getElementById('transition').style.display = 'none';
+			    document.getElementById('exitButton').style.display = 'none';
 			    document.getElementById('final').style.display = '';
 			    setOutput("You were defeated by boss # " + boss.level + " - Your final gold total was " + player.score);
 			}
@@ -103,9 +106,15 @@
 			    var sound = new Audio("http://themushroomkingdom.net/sounds/wav/smb/smb_stage_clear.wav");
 			    sound.play();
 			}
-
+			function addToSecondaryAttack(){
+				if(player.secondaryAttackTotal % 0){
+					player.secondaryAttackTotal ++;
+				}
+				player.secondaryAttackLeft = player.secondaryAttackTotal;
+			}
 			function nextLevel() {
 			    delay(2000);
+			    addToSecondaryAttack();
 			    boss.resetHealth();
 			    player.health = 100;
 			    boss.attack += .05;
@@ -115,11 +124,9 @@
 			    setVisibility('none', 'none', '');
 
 			}
-
 			function printGold(goldTotal) {
 			    return ("Your gold total is " + goldTotal);
 			}
-
 			function showStats() {
 			    playSound();
 			    player.score = player.score + 10 * boss.level;
@@ -130,7 +137,7 @@
 
 			function primaryAttack() {
 			    if (isAlive(player) && isAlive(boss)) {
-			        playerTurn(getRandomArbitrary(1, player.attack), 0);
+			        playerTurn(getRandomArbitrary(1, player.attack * 4), 0);
 			        bossTurn(getRandomArbitrary(1, boss.attack), player.defense);
 			    } else if (isAlive(player) && !isAlive(boss)) {
 			        showStats();
@@ -143,18 +150,23 @@
 			}
 
 			function secondaryAttack() {
-			    if (isAlive(player) && isAlive(boss)) {
-			        player.health -= 2;
-			        playerTurn(getRandomArbitrary(1, player.attack * 2), 0);
-			        bossTurn(getRandomArbitrary(1, boss.attack), player.defense);
-			    } else if (isAlive(player) && !isAlive(boss)) {
-			        showStats();
+				if(player.secondaryAttackLeft > 0){
+					player.secondaryAttackLeft --;
+			    	if (isAlive(player) && isAlive(boss)) {
+			        	player.health -= 1;
+			        	playerTurn(getRandomArbitrary(1, player.attack * 6), 0);
+			        	bossTurn(getRandomArbitrary(1, boss.attack), player.defense);
+			    	} else if (isAlive(player) && !isAlive(boss)) {
+			        	showStats();
 			        return;
-			    } else {
-			        endGame();
-			        return;
+			    	} else {
+			        	endGame();
+			        	return;
+			    	}
+			    	setOutput("Player health: " + Math.round(player.health) + " - Boss " + boss.level + " health: " + Math.round(boss.health));
+			    }else{
+			    	setOutput("You are out of secondary attacks!!")
 			    }
-			    setOutput("Player health: " + Math.round(player.health) + " - Boss " + boss.level + " health: " + Math.round(boss.health));
 			}
 
 			function getRandomArbitrary(min, max) {
