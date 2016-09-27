@@ -145,9 +145,7 @@
 			    setVisibility('none', 'none', '');
 			    
 			}
-			function printGold(goldTotal) {
-			    return (message[boss.level] + "\r\n" + " Your gold total is " + goldTotal);
-			}
+
 			function printGold(goldTotal) {
 				var winningLevel = 27;
 				if (boss.level <= winningLevel){
