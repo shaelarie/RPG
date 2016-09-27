@@ -13,15 +13,20 @@
 			levelMessages();
 			var player = '';
 			var boss = '';
-			document.getElementById('princess').style.display = 'none';
-			document.getElementById('fun').style.display = 'none';
-			document.getElementById('mystery').style.display = 'none';
-			document.getElementById('exitButton').style.display = '';
-			document.getElementById('final').style.display = 'none';
-			document.getElementById('transition').style.display = 'none';
-			setVisibility('', 'none', 'none');
+			initializeGame();
 
+
+			function initializeGame(){
+				document.getElementById('princess').style.display = 'none';
+				document.getElementById('fun').style.display = 'none';
+				document.getElementById('mystery').style.display = 'none';
+				document.getElementById('exitButton').style.display = '';
+				document.getElementById('final').style.display = 'none';
+				document.getElementById('transition').style.display = 'none';
+				setVisibility('', 'none', 'none');
+			}
 			function startGame() {
+				initializeGame();
 			    document.getElementById('final').style.display = 'none';
 			    setVisibility('none', '', 'none');
 			    boss = new Player(1, 1);
@@ -165,7 +170,6 @@
 			    document.getElementById('transition').style.display = '';
 			    setOutput(printGold.call(player, player.score));
 			}
-
 			function primaryAttack() {
 			    if (isAlive(player) && isAlive(boss)) {
 			        playerTurn(getRandomArbitrary(1, player.attack * 4), 0);
