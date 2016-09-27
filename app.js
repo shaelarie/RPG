@@ -137,7 +137,7 @@
 			    boss.attack += .05;
 			    boss.totalHealth = boss.health;
 			    boss.level++;
-<<<<<<< HEAD
+
 			    setOutput("Start Level");
 			    document.getElementById('transition').style.display = 'none';
 			    setVisibility('none', 'none', '');
@@ -147,7 +147,7 @@
 			}
 			function printGold(goldTotal) {
 			    return (message[boss.level] + "\r\n" + " Your gold total is " + goldTotal);
-=======
+
 			    setOutput("Start fighting!");
 				document.getElementById('transition').style.display = 'none';
 				setVisibility('none', 'none', '');
@@ -161,7 +161,6 @@
 				{
 					return("Your gold total is " + goldTotal);
 				}
->>>>>>> 8bc352f3de600f085d85263a5b15aa0a7e3c613c
 			}
 			function showStats() {
 			    playSound("http://themushroomkingdom.net/sounds/wav/smb/smb_stage_clear.wav");
