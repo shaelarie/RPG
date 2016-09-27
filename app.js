@@ -125,6 +125,7 @@
 				player.secondaryAttackLeft = player.secondaryAttackTotal;
 			}
 			function nextLevel() {
+
 			    delay(2000);
 			    addToSecondaryAttack();
 			    boss.resetHealth();
@@ -132,11 +133,19 @@
 			    boss.attack += .05;
 			    boss.totalHealth = boss.health;
 			    boss.level++;
-			    document.getElementById('transition').style.display = 'none';
-			    setVisibility('none', 'none', '');
+			    setOutput("Start fighting!");
+				document.getElementById('transition').style.display = 'none';
+				setVisibility('none', 'none', '');
 			}
 			function printGold(goldTotal) {
-			    return (message[boss.level] + "\r\n" + "Your gold total is " + goldTotal);
+				var winningLevel = 27;
+				if (boss.level <= winningLevel){
+			    	return (message[boss.level] + "\r\n" + "Your gold total is " + goldTotal);
+				}
+				else
+				{
+					return("Your gold total is " + goldTotal);
+				}
 			}
 			function showStats() {
 			    playSound("http://themushroomkingdom.net/sounds/wav/smb/smb_stage_clear.wav");
