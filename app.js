@@ -6,16 +6,17 @@
 				var myColor = "rgb(" + red + ", " + green + ", " + blue + ")";
 				document.body.style.backgroundColor = myColor;
 			}
-			window.setInterval(changeColor, 5000);
-			window.setInterval(mysteryButton, 20000);
+			window.setInterval(changeColor, 5000); //change every 5 seconds
+			window.setInterval(mysteryButton, 300000); //show every 5 minutes
 
 			var message = [];
 			levelMessages();
 			var player = '';
 			var boss = '';
+			document.getElementById('princess').style.display = 'none';
 			document.getElementById('fun').style.display = 'none';
 			document.getElementById('mystery').style.display = 'none';
-			document.getElementById('exitButton').style.display = 'none';
+			document.getElementById('exitButton').style.display = '';
 			document.getElementById('final').style.display = 'none';
 			document.getElementById('transition').style.display = 'none';
 			setVisibility('', 'none', 'none');
@@ -37,6 +38,7 @@
 				this.name = name;
 			    this.attack = attack;
 			    this.defense = defense;
+			    this.defendLeft = 2;
 			    this.secondaryAttackLeft = 2;
 			    this.secondaryAttackTotal = 2;
 			    this.health = 100;
@@ -119,10 +121,12 @@
 			    sound.play();
 			}
 			function addToSecondaryAttack(){
-				if(player.secondaryAttackTotal % 0){
+				if(boss.level % 2 == 0){
 					player.secondaryAttackTotal ++;
 				}
 				player.secondaryAttackLeft = player.secondaryAttackTotal;
+				player.defendLeft = player.secondaryAttackTotal;
+
 			}
 			function nextLevel() {
 
@@ -133,6 +137,17 @@
 			    boss.attack += .05;
 			    boss.totalHealth = boss.health;
 			    boss.level++;
+
+			    setOutput("Start Level");
+			    document.getElementById('transition').style.display = 'none';
+			    setVisibility('none', 'none', '');
+			    if(boss.level == 28){
+			    	document.getElementById('princess').style.display = '';
+			    }
+			}
+			function printGold(goldTotal) {
+			    return (message[boss.level] + "\r\n" + " Your gold total is " + goldTotal);
+
 			    setOutput("Start fighting!");
 				document.getElementById('transition').style.display = 'none';
 				setVisibility('none', 'none', '');
@@ -192,18 +207,23 @@
 			    return Math.random() * (max - min) + min;
 			}
 			function defend() {
-			    if (isAlive(player) && isAlive(boss)) {
-			        player.health += getRandomArbitrary(1, 6);
-			        playerTurn(getRandomArbitrary(0, 1), 0);
-			        bossTurn(getRandomArbitrary(0, 4), 0);
-			    } else if (isAlive(player) && !isAlive(boss)) {
-			        showStats();
-			        return;
-			    } else {
-			        endGame();
-			        return;
-			    }
-			    setOutput("Your " + player.name + "'s health: " + Math.round(player.health) + " - Boss " + boss.level + " health: " + Math.round(boss.health));
+				if(player.defendLeft > 0){
+			    	if (isAlive(player) && isAlive(boss)) {
+			    		player.defendLeft --;
+			        	player.health += getRandomArbitrary(1, 6);
+			        	playerTurn(getRandomArbitrary(0, 1), 0);
+			        	bossTurn(getRandomArbitrary(0, 4), 0);
+			    	} else if (isAlive(player) && !isAlive(boss)) {
+			        	showStats();
+			        	return;
+			    	} else {
+			        	endGame();
+			        	return;
+			    	}
+			    	setOutput("Your " + player.name + "'s health: " + Math.round(player.health) + " - Boss " + boss.level + " health: " + Math.round(boss.health));
+				}else{
+					setOutput("You are out of defends!!");
+				}
 			}
 			function isAlive(character) {
 
@@ -221,6 +241,7 @@
 				}
 			}
 			function funny(){
+				setOutput("");
 				setVisibility('none','none','none');
 				document.getElementById('transition').style.display = 'none';
 			    document.getElementById('exitButton').style.display = 'none';
