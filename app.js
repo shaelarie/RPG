@@ -126,7 +126,6 @@
 			}
 			function nextLevel() {
 			    delay(2000);
-			    setOutput(message[boss.level]);
 			    addToSecondaryAttack();
 			    boss.resetHealth();
 			    player.health = 100;
@@ -137,7 +136,7 @@
 			    setVisibility('none', 'none', '');
 			}
 			function printGold(goldTotal) {
-			    return ("Your gold total is " + goldTotal);
+			    return (message[boss.level] + "\r\n" + "Your gold total is " + goldTotal);
 			}
 			function showStats() {
 			    playSound("http://themushroomkingdom.net/sounds/wav/smb/smb_stage_clear.wav");
