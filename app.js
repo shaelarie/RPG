@@ -138,7 +138,7 @@
 			    boss.totalHealth = boss.health;
 			    boss.level++;
 
-			    setOutput("Start Level");
+			    setOutput("Start Level " + boss.level);
 			    document.getElementById('transition').style.display = 'none';
 			    setVisibility('none', 'none', '');
 			    if(boss.level == 28){
@@ -147,10 +147,6 @@
 			}
 			function printGold(goldTotal) {
 			    return (message[boss.level] + "\r\n" + " Your gold total is " + goldTotal);
-
-			    setOutput("Start fighting!");
-				document.getElementById('transition').style.display = 'none';
-				setVisibility('none', 'none', '');
 			}
 			function printGold(goldTotal) {
 				var winningLevel = 27;
