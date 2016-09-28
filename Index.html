@@ -30,6 +30,17 @@
         word-spacing: 4px;
         letter-spacing: 3px;
     }
+
+.button1 {
+    
+    color: black;
+    
+}
+
+.button1:hover {
+    
+    color: #FA5882;
+}
     
     </style>
 </head>
@@ -63,12 +74,12 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none;">
+        <a class="collapsed button1" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none; font-size: 20px;">
           <b>INSTRUCTIONS</b>
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" >
       <div class="panel-body" style="text-align: center;">
         <b>Choose a character -- Alien, Ninja or Cowboy.</b> <br> As an alien, you are able to maximize damage but have less ability to defend yourself. <br> Ninjas are quick to defend, but do less damage. <br>Cowboys own equal abilities to exact damage and defend. <br>
        <b>Use your Primary Weapon, Secondary Weapon or Defend to battle through each level.</b><br> Primary Weapon delivers a character's normal damage. Each Secondary Weapon delivers more damage, but causes a decrease in your health. <br> Using Defend allows you to limit the damaged inflicted by the boss. You only have a number of Secondary Weapons and Defends each round.
@@ -155,7 +166,8 @@ function blinker() {
     $('.blink_me').fadeIn(500);
 }
 
-setInterval(blinker, 1000);</script>
+
+</script>
 
     </body>
 </html>
