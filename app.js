@@ -287,7 +287,7 @@
 
 				message[19] = "You are getting close, but the King has noticed you slowing down. Keep hope alive!";
 
-				message[20] = "As the Princess' cries get louder and louder, you are becoming even more determined to accomplish your task. Take each level one at a time. You never know what's lurking right around the corner.";
+				message[20] = "As the Princess' cries get louder and louder, you are becoming even more determined to accomplish your task. <br>Take each level one at a time. You never know what's lurking right around the corner.";
 
 				message[21] = "Did you hear that? The Princess senses someone is getting close. Don't stop now, you are almost there.";
 
@@ -301,5 +301,5 @@
 
 				message[26] = "Only Sitiyok, a three-headed, 25-foot tall giant, stands between you and the Princess. You've got this. Go get him!";
 
-				message[27] = "Congratulations!!! You have reached the Princess and saved her from imminent death. Along with the gold you have accumulated, and the Princess' undying love, of course, the King is offering you a chance to accumulate even more gold. Continue to defeat the evil wizard's minions and watch your stacks of gold rise to the skies. Or quit now and live happily ever after as the conquering hero.";
+				message[27] = "Congratulations!!! You have reached the Princess and saved her from imminent death. <br>Along with the gold you have accumulated, and the Princess' undying love, of course, <br>the King is offering you a chance to accumulate even more gold. <br>Continue to defeat the evil wizard's minions and watch your stacks of gold rise to <br>the skies. Or quit now and live happily ever after as the conquering hero.";
 			}
