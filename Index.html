@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta charset="utf-8">
+        <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Princess Rescue RPG</title>
@@ -34,30 +34,30 @@
 
    <body>
    <center>
-   <div class="nav nav-pills navbar-right" style="padding-right: 20px;padding-top: 0px" id="exitButton">
-            
+   <div class="nav nav-pills navbar-right" style="padding-right: 20px;padding-top: 5px" id="exitButton">
+            <button class="btn btn-primary" onclick="alternateEnding()">End Game</button>
         </div>    
-        <div class="row">
+
           <div class="nav nav-pills navbar-right" style="padding-right: 5px;padding-top: 5px" id="mystery">
             <button class="btn btn-primary" onclick="funny()" align="bottom">Mysterious Button</button>
         </div>
 
-          <div class="col-md-12 page-header" style="padding-top: 0px;">
+          <div class="col-md-12 page-header">
              <h1>Princess Rescue</h1> 
          </div>
-         </div>
+
          <div id="startNewGame">
          <div class="row">
          <div class="col-md-6 col-md-offset-3">
-
        <b><h2><span class="blink_me">KRISHONSTORIA NEEDS YOUR HELP!!</span></h2></b><br>
-       
+
        <p class="typewriter" style="height: 150px; color: #2E2E2E;">The Princess of Krishonstoria has been captured by the evil wizard Andrew! King Kristofer is asking everyone to help rescue his beloved daughter. Your goal is simple: save the Princess of Krishonstoria! But to achieve your goal, you must defeat a number of the wizard's bosses, which include dragons, giants, trolls, witches and other assorted magical creatures. Along the way, you will collect gold bars. If you collect enough gold, the Princess will reward you by becoming your bride!
         </p>
 
        </div></div><br>
-       <button class="btn btn-success" onclick="startGame()" style="background-color: #FA5882; border-color: black;">Start Game</button><br><br>
-       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+              <button class="btn btn-success" onclick="startGame()" style="background-color: #FA5882; border-color: black;">Start Game</button><br><br>
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
@@ -74,7 +74,8 @@
       </div>
     </div>
   </div>
-              
+  </div>
+
           </div>
          
          <div class="row">
@@ -121,14 +122,11 @@
 			<img src="http://www.spyderonlines.com/images/wallpapers/princess-image/princess-image-14.png">
 		</div>
 
-        
-
 </center>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
     <script src="app.js"></script>
-    <script type="text/javascript">
-        var text = $('.typewriter').text();
+    <script type="text/javascript">        var text = $('.typewriter').text();
 
 var length = text.length;
 var timeOut;
@@ -154,10 +152,7 @@ function blinker() {
     $('.blink_me').fadeIn(500);
 }
 
-setInterval(blinker, 1000);
-    </script>
-
-
+setInterval(blinker, 1000);</script>
 
     </body>
 </html>
