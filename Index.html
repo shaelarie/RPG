@@ -1,14 +1,16 @@
 <html>
 <head>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Princess Rescue RPG</title>
     <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css"> 
+
     #typeWriterText {
         text-align: left; 
+
         font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
         font-size: 14px;
         font-style: normal;
@@ -35,7 +37,9 @@
    <body>
    <center>
        
-
+		<div class="nav nav-pills navbar-right" style="padding-right: 20px;padding-top: 5px" id="exitButton">
+			<button class="btn btn-primary" onclick="alternateEnding()">End Game</button>
+		</div>	
           <div class="nav nav-pills navbar-right" style="padding-right: 5px;padding-top: 5px" id="mystery">
             <button class="btn btn-primary" onclick="funny()" align="bottom">Mysterious Button</button>
         </div>
@@ -80,10 +84,8 @@
          <div class="col-md-12">
 
             <div style="padding-top: 20px" id="opening" display="none">
-              <div class="nav nav-pills navbar-right" style="padding-right: 20px;padding-top: 5px" id="exitButton">
-            <button class="btn btn-primary" onclick="alternateEnding()">End Game</button>
-        </div>
-           Select Character Type:
+              
+            Select Character Type:
             <button class="btn btn-primary" onclick="alien()">Alien</button>
             <button class="btn btn-success" onclick="ninja()">Ninja</button>
             <button class="btn btn-warning" onclick="cowboy()">Cowboy</button>
