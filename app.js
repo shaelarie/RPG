@@ -13,15 +13,20 @@
 			levelMessages();
 			var player = '';
 			var boss = '';
-			document.getElementById('princess').style.display = 'none';
-			document.getElementById('fun').style.display = 'none';
-			document.getElementById('mystery').style.display = 'none';
-			document.getElementById('exitButton').style.display = '';
-			document.getElementById('final').style.display = 'none';
-			document.getElementById('transition').style.display = 'none';
-			setVisibility('', 'none', 'none');
+			initializeGame();
 
+
+			function initializeGame(){
+				document.getElementById('princess').style.display = 'none';
+				document.getElementById('fun').style.display = 'none';
+				document.getElementById('mystery').style.display = 'none';
+				document.getElementById('exitButton').style.display = '';
+				document.getElementById('final').style.display = 'none';
+				document.getElementById('transition').style.display = 'none';
+				setVisibility('', 'none', 'none');
+			}
 			function startGame() {
+				initializeGame();
 			    document.getElementById('final').style.display = 'none';
 			    setVisibility('none', '', 'none');
 			    boss = new Player(1, 1);
@@ -145,9 +150,7 @@
 			    setVisibility('none', 'none', '');
 			    
 			}
-			function printGold(goldTotal) {
-			    return (message[boss.level] + "\r\n" + " Your gold total is " + goldTotal);
-			}
+
 			function printGold(goldTotal) {
 				var winningLevel = 27;
 				if (boss.level <= winningLevel){
@@ -165,7 +168,6 @@
 			    document.getElementById('transition').style.display = '';
 			    setOutput(printGold.call(player, player.score));
 			}
-
 			function primaryAttack() {
 			    if (isAlive(player) && isAlive(boss)) {
 			        playerTurn(getRandomArbitrary(1, player.attack * 4), 0);
