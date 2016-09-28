@@ -7,7 +7,7 @@
 				document.body.style.backgroundColor = myColor;
 			}
 			window.setInterval(changeColor, 5000); //change every 5 seconds
-			window.setInterval(mysteryButton, 300000); //show every 5 minutes
+			window.setInterval(mysteryButton, 600000); //show every 10 minutes
 
 			var message = [];
 			levelMessages();
