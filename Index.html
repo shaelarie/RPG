@@ -4,34 +4,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Princess Rescue RPG</title>
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css"> 
+    p {
+        text-align: left; 
+        font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
+        font-size: 14px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 600;
+        line-height: 20px;}
+    h1 {
+        font-size: 50px;
+        font-weight: 700;
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        color: #FA5882;
+        text-shadow: 4px 4px 3px rgba(0,0,0,0.1);
+    } 
+    h2{
+        font-weight: 600;
+        color: red;
+        word-spacing: 4px;
+        letter-spacing: 3px;
+    }
+    
+    </style>
 </head>
 
    <body>
    <center>
-   <div class="nav nav-pills navbar-right" style="padding-right: 20px;padding-top: 5px" id="exitButton">
-            <button class="btn btn-primary" onclick="alternateEnding()">End Game</button>
+   <div class="nav nav-pills navbar-right" style="padding-right: 20px;padding-top: 0px" id="exitButton">
+            
         </div>    
-
+        <div class="row">
           <div class="nav nav-pills navbar-right" style="padding-right: 5px;padding-top: 5px" id="mystery">
             <button class="btn btn-primary" onclick="funny()" align="bottom">Mysterious Button</button>
         </div>
 
-          <div class="col-md-12 page-header">
+          <div class="col-md-12 page-header" style="padding-top: 0px;">
              <h1>Princess Rescue</h1> 
          </div>
-
+         </div>
          <div id="startNewGame">
          <div class="row">
          <div class="col-md-6 col-md-offset-3">
-       <b>Welomce to "Princess Rescue"!</b>
-       <p>The Princess of Krishonstoria has been captured by the evil wizard Andrew. King Kristofer is asking everyone to help rescue his beloved daughter.</p>
-       <p>Your goal is simple: save the Princess of Krishonstoria. But to achieve your goal, you must defeat a number of the wizard's bosses, which include dragons, giants, trolls, witches and other assorted magical creatures. Along the way, you will collect gold bars. If you collect enough gold, the Princess will reward you by becoming your bride.</p>
-       <p><b>Instructions:</b> Choose a character -- Alien, Ninja or Cowboy. As an alien, you are able to maximize damage but have less ability to defend yourself. Ninjas are quick to defend, but do less damage. Cowboys own equal abilities to exact damage and defend. 
-       <p>Use your Primary Weapon, Secondary Weapon or Defend to battle through each level. Primary Weapon delivers a character's normal damage. Each Secondary Weapon delivers more damage, but causes a decrease in your health. Using Defend allows you to limit the damaged inflicted by the boss. You only have a number of Secondary Weapons and Defends each round.</p>
-       <p>Are you up to the challenge? Good Luck!</p>
+       <b><h2><span class="blink_me">KRISHONSTORIA NEEDS YOUR HELP!!</span></h2></b><br>
+       
+       <p class="typewriter" style="height: 150px; color: #2E2E2E;">The Princess of Krishonstoria has been captured by the evil wizard Andrew! King Kristofer is asking everyone to help rescue his beloved daughter. Your goal is simple: save the Princess of Krishonstoria! But to achieve your goal, you must defeat a number of the wizard's bosses, which include dragons, giants, trolls, witches and other assorted magical creatures. Along the way, you will collect gold bars. If you collect enough gold, the Princess will reward you by becoming your bride!
+        </p>
        </div></div><br>
-              <button class="btn btn-success" onclick="startGame()">Start Game</button>
+       <button class="btn btn-success" onclick="startGame()" style="background-color: #FA5882; border-color: black;">Start Game</button><br><br>
+       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none;">
+          <b>INSTRUCTIONS</b>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body" style="text-align: center;">
+        <b>Choose a character -- Alien, Ninja or Cowboy.</b> <br> As an alien, you are able to maximize damage but have less ability to defend yourself. <br> Ninjas are quick to defend, but do less damage. <br>Cowboys own equal abilities to exact damage and defend. <br>
+       <b>Use your Primary Weapon, Secondary Weapon or Defend to battle through each level.</b><br> Primary Weapon delivers a character's normal damage. Each Secondary Weapon delivers more damage, but causes a decrease in your health. <br> Using Defend allows you to limit the damaged inflicted by the boss. You only have a number of Secondary Weapons and Defends each round.
+       <br>Are you up to the challenge? <br>Good Luck!
+      </div>
+    </div>
+  </div>
+              
           </div>
          
          <div class="row">
@@ -78,10 +119,43 @@
 			<img src="http://www.spyderonlines.com/images/wallpapers/princess-image/princess-image-14.png">
 		</div>
 
+        
+
 </center>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
     <script src="app.js"></script>
+    <script type="text/javascript">
+        var text = $('.typewriter').text();
+
+var length = text.length;
+var timeOut;
+var character = 0;
+
+
+(function typeWriter() { 
+    timeOut = setTimeout(function() {
+        character++;
+        var type = text.substring(0, character);
+        $('.typewriter').text(type);
+        typeWriter();
+        
+        if (character == length) {
+            clearTimeout(timeOut);
+        }
+        
+    }, 20);
+}());
+
+function blinker() {
+    $('.blink_me').fadeOut(50);
+    $('.blink_me').fadeIn(500);
+}
+
+setInterval(blinker, 1000);
+    </script>
+
+
 
     </body>
 </html>
